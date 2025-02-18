@@ -3,3 +3,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+.cart-section-container {
+    border: 2px solid purple;
+    border-radius: 20px;
+    margin-bottom: 56px;
+    padding: 20px;
+}

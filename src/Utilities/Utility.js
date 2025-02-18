@@ -18,4 +18,4 @@ const getFromLS = () => {
     return [];
 }
 
-export {setToLS};
+export {setToLS, getFromLS};
