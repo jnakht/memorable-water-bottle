@@ -10,6 +10,12 @@ const setToLS = (id) => {
     setTheNewItem(cartArr);
 }
 
+const removeFromLS = id => {
+    const arr = getFromLS();
+    const newArr = arr.filter(idx => idx !== id);
+    setTheNewItem(newArr);
+}
+
 const getFromLS = () => {
     const valueStr = localStorage.getItem('cart');
     if (valueStr) {
@@ -18,4 +24,4 @@ const getFromLS = () => {
     return [];
 }
 
-export {setToLS, getFromLS};
+export {setToLS, getFromLS, removeFromLS};

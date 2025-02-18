@@ -25,6 +25,11 @@ const Bottles = () => {
         setToLS(bottle.id);
     }
 
+    const removeFromCart = (id) => {
+        const newCart = cart.filter(sCart => sCart.id !== id);
+        setCart(newCart);
+    }
+
     // load whats on localStorage and show when beginning of this web
     useEffect(() => {
         if (bottles.length) {
@@ -52,7 +57,7 @@ const Bottles = () => {
             <h3>Bottles Available: {bottles.length}</h3>
             <div className="cart-section-container">
                 <h3>Cart: {cart.length}</h3>
-                <Carts carts={cart}></Carts>
+                <Carts carts={cart} removeFromCart={removeFromCart}></Carts>
             </div>
             <div className="bottles-container">
             {
