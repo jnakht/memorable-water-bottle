@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Bottle from "../Bottle/Bottle";
 import './Bottles.css'
-import { getFromLS, setToLS } from "../../Utilities/Utility";
+import { getFromLS, removeFromLS, setToLS } from "../../Utilities/Utility";
 import Carts from "../Carts/Carts";
 
 
@@ -25,9 +25,13 @@ const Bottles = () => {
         setToLS(bottle.id);
     }
 
-    const removeFromCart = (id) => {
-        const newCart = cart.filter(sCart => sCart.id !== id);
-        setCart(newCart);
+    const handleRemoveFromCart = (id) => {
+        // remove from UI
+        const remaining = cart.filter(sCart => sCart.id !== id);
+        setCart(remaining);
+
+        // remove from local storage
+        removeFromLS(id);
     }
 
     // load whats on localStorage and show when beginning of this web
@@ -57,7 +61,7 @@ const Bottles = () => {
             <h3>Bottles Available: {bottles.length}</h3>
             <div className="cart-section-container">
                 <h3>Cart: {cart.length}</h3>
-                <Carts carts={cart} removeFromCart={removeFromCart}></Carts>
+                <Carts carts={cart} handleRemoveFromCart={handleRemoveFromCart}></Carts>
             </div>
             <div className="bottles-container">
             {
